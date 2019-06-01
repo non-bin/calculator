@@ -69,8 +69,15 @@ module.exports.parseString = function(inputString) {
 			segmentType = newSegmentType;  // update the segment type
 			segmentIndex++;                // inc the segment index
 
-			output.types [segmentIndex] = segmentType;  // store the segment type
-			output.values[segmentIndex] = char;         // and new segment
+			if (segmentIndex == 1 && newSegmentType == 'number' && output.values[0] == '-') {  // if it's a negative number
+				segmentIndex = 0;
+
+				output.types [0] = segmentType;  // store the segment type
+				output.values[0] = '-'+char;     // and new segment
+			} else {
+				output.types [segmentIndex] = segmentType;  // store the segment type
+				output.values[segmentIndex] = char;         // and new segment
+			}
 		}
 	}
 

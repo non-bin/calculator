@@ -36,7 +36,7 @@ module.exports.parseString = function(inputString) {
 
 			if (['section', 'number'].includes(output.types[segmentIndex])) {  // if the previous segment is a section or number, add the implied *. eg 1(2) -> 1*(2)
 				segmentIndex++;
-				output.types   [segmentIndex] = 'operator';
+				output.types [segmentIndex] = 'operator';
 				output.values[segmentIndex] = '*';
 			}
 
@@ -54,7 +54,7 @@ module.exports.parseString = function(inputString) {
 			segmentType = newSegmentType;  // update the segment type
 			segmentIndex++;                // inc the segment index
 
-			output.types   [segmentIndex] = segmentType;  // store the segment type
+			output.types [segmentIndex] = segmentType;                                // store the segment type
 			output.values[segmentIndex] = module.exports.parseString(sectionString);  // recur
 
 			continue;
@@ -69,8 +69,8 @@ module.exports.parseString = function(inputString) {
 			segmentType = newSegmentType;  // update the segment type
 			segmentIndex++;                // inc the segment index
 
-			output.types  [segmentIndex] = segmentType;  // store the segment type
-			output.values[segmentIndex]  = char;         // and new segment
+			output.types [segmentIndex] = segmentType;  // store the segment type
+			output.values[segmentIndex] = char;         // and new segment
 		}
 	}
 
